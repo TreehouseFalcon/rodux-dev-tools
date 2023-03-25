@@ -1,0 +1,6 @@
+{
+	"name": "rodux-dev-tools",
+	"tree": {
+		"$path": "src"
+	}
+}

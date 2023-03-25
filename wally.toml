@@ -1,0 +1,12 @@
+[package]
+name = "EncodedLua/rodux-dev-tools"
+description = "Visualize and debug your Rodux state easier with tools to inspect actions and state"
+license = "Apache-2.0"
+authors = ["EncodedLua"]
+version = "0.0.1"
+
+registry = "https://github.com/UpliftGames/wally-index"
+realm = "shared"
+
+exclude = ["**"]
+include = ["src", "src/*", "default.project.json", "wally.lock", "wally.toml"]

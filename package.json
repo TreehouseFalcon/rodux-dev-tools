@@ -1,0 +1,9 @@
+{
+	"devDependencies": {
+		"husky": "^8.0.0",
+		"lint-staged": "^12.4.1"
+	},
+	"scripts": {
+		"prepare": "husky install && just husky-init-only-run-once"
+	}
+}

@@ -1,0 +1,3 @@
+{
+	"src/**/*.{lua,luau}": ["just lint", "just format"]
+}
