@@ -8,9 +8,3 @@ lint +files="src/":
 
 format +files="src/":
 	stylua {{files}}
-
-husky-init-only-run-once:
-	npx husky-init
-	sed -i '$ d' .husky/pre-commit # Remove the last line in the precommit script (should be "npm test" at the time of writing)
-	echo "exec >/dev/tty 2>&1;" >> .husky/pre-commit
-	echo "npx lint-staged" >> .husky/pre-commit # Replace with lint-staged invocation

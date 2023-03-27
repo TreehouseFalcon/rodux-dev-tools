@@ -4,6 +4,6 @@
 		"lint-staged": "^12.4.1"
 	},
 	"scripts": {
-		"prepare": "husky install && just husky-init-only-run-once"
+		"prepare": "husky install"
 	}
 }
