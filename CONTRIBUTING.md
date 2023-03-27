@@ -17,3 +17,15 @@ This project uses a tool called `husky` to run scripts before and after commits.
 ## Aftman
 
 This project also uses [Aftman](https://github.com/LPGhatguy/aftman) to handle some of the tool installations. Run `aftman install` to install the tools needed for this project.
+
+## Wally
+
+To install the project's library dependencies, run `wally install` in the root directory of the project.
+
+## Extensions
+
+There's some recommended extensions in `.vscode/extensions.json`. These are not required, but are recommended.
+
+---
+
+By this point, everything should be working!

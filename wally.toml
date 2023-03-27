@@ -1,5 +1,5 @@
 [package]
-name = "EncodedLua/rodux-dev-tools"
+name = "encodedlua/rodux-dev-tools"
 description = "Visualize and debug your Rodux state easier with tools to inspect actions and state"
 license = "Apache-2.0"
 authors = ["EncodedLua"]
@@ -10,3 +10,6 @@ realm = "shared"
 
 exclude = ["**"]
 include = ["src", "src/*", "default.project.json", "wally.lock", "wally.toml"]
+
+[dev-dependencies]
+TestEZ = "roblox/testez@0.4.1"

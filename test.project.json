@@ -1,0 +1,27 @@
+{
+	"name": "rodux-dev-tools (testing)",
+	"tree": {
+		"$className": "DataModel",
+
+		"ReplicatedStorage": {
+			"$className": "ReplicatedStorage",
+			"RoduxDevTools": {
+				"$path": "src"
+			},
+			"tests": {
+				"$path": "tests"
+			},
+			"DevPackages": {
+				"$path": "DevPackages"
+			}
+		},
+
+		"StarterPlayer": {
+			"$className": "StarterPlayer",
+			"StarterPlayerScripts": {
+				"$className": "StarterPlayerScripts",
+				"$path": "test-runner"
+			}
+		}
+	}
+}
