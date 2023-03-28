@@ -1,4 +1,5 @@
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local RunService = game:GetService("RunService")
 local TestEZ = require(ReplicatedStorage.DevPackages.TestEZ)
 
 local function test()
@@ -11,12 +12,14 @@ local function test()
 	return completed, result
 end
 
-local completed, result = test()
+if RunService:IsStudio() and not RunService:IsRunning() then
+	local completed, result = test()
 
-if completed then
-	if not result then
-		error("Tests have failed.", 0)
+	if completed then
+		if not result then
+			error("Tests have failed.", 0)
+		end
+	else
+		error(result, 0)
 	end
-else
-	error(result, 0)
 end

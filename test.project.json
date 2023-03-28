@@ -5,11 +5,17 @@
 
 		"ReplicatedStorage": {
 			"$className": "ReplicatedStorage",
-			"RoduxDevTools": {
-				"$path": "src"
-			},
 			"tests": {
-				"$path": "tests"
+				"$path": "tests/"
+			},
+			"stories": {
+				"$path": "stories/"
+			},
+			"Packages": {
+				"$path": "Packages",
+				"RoduxDevTools": {
+					"$path": "src/"
+				}
 			},
 			"DevPackages": {
 				"$path": "DevPackages"
