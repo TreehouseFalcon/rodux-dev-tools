@@ -16,6 +16,7 @@ Rodux = "roblox/rodux@3.0.0"
 Roact = "roblox/roact@1.4.4"
 RoduxHooks = "solarhorizon/rodux-hooks@0.3.1"
 RoactHooks = "kampfkarren/roact-hooks@0.5.1"
+RoactSpring = "chriscerie/roact-spring@1.0.1"
 
 [dev-dependencies]
 TestEZ = "roblox/testez@0.4.1"

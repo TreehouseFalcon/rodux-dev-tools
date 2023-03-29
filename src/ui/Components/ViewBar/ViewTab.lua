@@ -1,15 +1,18 @@
 local Roact = require(script.Parent.Parent.Parent.Parent.Parent.Roact)
 local e = Roact.createElement
-local Transform = require(script.Parent.Parent.Transform)
 local Transformable = require(script.Parent.Parent.Transformable)
 local Icon = require(script.Parent.Parent.Icon)
 local Label = require(script.Parent.Parent.Label)
+local Button = require(script.Parent.Parent.Button)
 
 local TIcon = Transformable(Icon)
+local TButton = Transformable(Button)
 
 type Props = {
+	width: number,
 	icon: string,
 	text: string,
+	layoutOrder: number,
 	activated: () -> nil,
 }
 
@@ -19,8 +22,11 @@ local function ViewTab(props: Props)
 	assert(typeof(icon) == "string", "icon must be a string")
 	assert(typeof(text) == "string", "text must be a string")
 
-	return e(Transform, {
-		size = UDim2.new(0, 140, 1, 0),
+	return e(TButton, {
+		size = UDim2.new(0, props.width, 1, 0),
+		layoutOrder = props.layoutOrder,
+		backgroundTransparency = 1,
+		activated = props.activated,
 	}, {
 		Icon = e(TIcon, {
 			icon = icon,
