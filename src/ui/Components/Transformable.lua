@@ -7,10 +7,17 @@ type RoactComponent = typeof(Roact.Component)
 
 local function Transformable(Component: RoactComponent): RoactComponent
 	return function(props: TransformableTypes.Props)
+		local automaticSize = props.automaticSize
+
 		return e("Frame", {
 			AnchorPoint = if props.anchorPoint then props.anchorPoint else Vector2.new(0, 0),
 			Position = if props.position then props.position else UDim2.fromScale(0, 0),
-			Size = if props.size then props.size else UDim2.fromScale(1, 1),
+			Size = if props.size ~= nil
+				then props.size
+				elseif automaticSize == Enum.AutomaticSize.X then UDim2.fromScale(0, 1)
+				elseif automaticSize == Enum.AutomaticSize.Y then UDim2.fromScale(1, 0)
+				elseif automaticSize == Enum.AutomaticSize.XY then UDim2.fromScale(0, 0)
+				else UDim2.fromScale(1, 1),
 			AutomaticSize = props.automaticSize,
 			Rotation = props.rotation,
 			BackgroundTransparency = if props.debug then 0.5 else 1,

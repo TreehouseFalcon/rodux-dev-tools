@@ -11,7 +11,7 @@ export type Props = {
 
 local function Icon(props: Props)
 	local icon = Icons[props.icon]
-	assert(icon, tostring(icon) .. " is not a valid icon name or size")
+	assert(icon, tostring(icon) .. " is not a valid icon name")
 
 	return e("ImageLabel", {
 		Size = UDim2.fromScale(1, 1),

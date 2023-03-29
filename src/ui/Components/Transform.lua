@@ -5,14 +5,21 @@ local e = Roact.createElement
 
 local function Transform(props: TransformableTypes.Props)
 	local color = props.color
+	local automaticSize = props.automaticSize
+
 	if props.debug then
 		color = Color3.fromHSV(0, 1, 1)
 	end
 
 	return e("Frame", {
-		AnchorPoint = if props.anchorPoint then props.anchorPoint else Vector2.new(0.5, 0.5),
-		Position = if props.position then props.position else UDim2.fromScale(0.5, 0.5),
-		Size = if props.size then props.size else UDim2.fromScale(1, 1),
+		AnchorPoint = if props.anchorPoint then props.anchorPoint else Vector2.new(0, 0),
+		Position = if props.position then props.position else UDim2.fromScale(0, 0),
+		Size = if props.size ~= nil
+			then props.size
+			elseif automaticSize == Enum.AutomaticSize.X then UDim2.fromScale(0, 1)
+			elseif automaticSize == Enum.AutomaticSize.Y then UDim2.fromScale(1, 0)
+			elseif automaticSize == Enum.AutomaticSize.XY then UDim2.fromScale(0, 0)
+			else UDim2.fromScale(1, 1),
 		AutomaticSize = props.automaticSize,
 		Rotation = props.rotation,
 		BackgroundTransparency = if color then 0.5 else 1,
