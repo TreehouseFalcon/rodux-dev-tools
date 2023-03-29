@@ -3,34 +3,13 @@ local TransformableTypes = require(script.Parent.Parent.Types.Transformable)
 local Immutable = require(script.Parent.Parent.Parent.Immutable)
 local e = Roact.createElement
 
-type RoactElement = typeof(Roact.createElement("TextLabel"))
 type RoactComponent = typeof(Roact.Component)
 
---[=[
-	A higher order component that allows components the ability to reposition and resize for specifying layout configuration.
-
-	@class Transformable
-]=]
-
---[=[
-	The higher order Transformable component.
-
-	To use this higher order component, it must be called with a component. It
-	will return a Transformable component wrapped around the former component.
-
-	```lua
-		local NewComponent = Transformable(Component)
-		local element = Roact.createElement(NewComponent)
-	```
-
-	@within Transformable
-	@param Component RoactComponent -- The component to wrap within a Transformable
-]=]
-function Transformable(Component: RoactComponent): RoactComponent
-	return function(props: TransformableTypes.Props): RoactElement
+local function Transformable(Component: RoactComponent): RoactComponent
+	return function(props: TransformableTypes.Props)
 		return e("Frame", {
-			AnchorPoint = if props.anchorPoint then props.anchorPoint else Vector2.new(0.5, 0.5),
-			Position = if props.position then props.position else UDim2.fromScale(0.5, 0.5),
+			AnchorPoint = if props.anchorPoint then props.anchorPoint else Vector2.new(0, 0),
+			Position = if props.position then props.position else UDim2.fromScale(0, 0),
 			Size = if props.size then props.size else UDim2.fromScale(1, 1),
 			AutomaticSize = props.automaticSize,
 			Rotation = props.rotation,

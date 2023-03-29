@@ -1,37 +1,15 @@
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local Roact = require(ReplicatedStorage.Packages.Roact)
 local TransformableTypes = require(script.Parent.Parent.Types.Transformable)
+local e = Roact.createElement
 
-type RoactElement = typeof(Roact.createElement("TextLabel"))
-
---[=[
-	An instantiable component used for specifying layout configuration. Based on Transformable.
-
-	@class Transform
-]=]
-
---[=[
-	The Transform component.
-
-	This code creates a Transform that sits at the center-bottom of the parent component:
-
-	```lua
-		local transform = Roact.createElement(Transform, {
-			anchorPoint = Vector2.new(0.5, 1),
-			size = UDim2.fromScale(0.75, 0.25),
-			position = UDim2.fromScale(0.5, 1)
-		})
-	```
-
-	@within Transform
-]=]
-local function Transform(props: TransformableTypes.Props): RoactElement
+local function Transform(props: TransformableTypes.Props)
 	local color = props.color
 	if props.debug then
 		color = Color3.fromHSV(0, 1, 1)
 	end
 
-	return Roact.createElement("Frame", {
+	return e("Frame", {
 		AnchorPoint = if props.anchorPoint then props.anchorPoint else Vector2.new(0.5, 0.5),
 		Position = if props.position then props.position else UDim2.fromScale(0.5, 0.5),
 		Size = if props.size then props.size else UDim2.fromScale(1, 1),

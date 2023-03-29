@@ -3,6 +3,7 @@ local Roact = require(ReplicatedStorage.Packages.Roact)
 local Hooks = require(ReplicatedStorage.Packages.RoactHooks).new(Roact)
 local Transformable = require(script.Parent.Transformable)
 local ThemeContext = require(script.Parent.Parent.Contexts.Theme)
+local e = Roact.createElement
 
 export type LabelProps = {
 	textColorKey: string?,
@@ -12,7 +13,7 @@ export type LabelProps = {
 	textWrapped: boolean?,
 	textXAlignment: Enum.TextXAlignment?,
 	textYAlignment: Enum.TextYAlignment?,
-	automaticSize: Enum.AutomaticSize?, -- This doesn't need documentation since it's just behavior forwarded from a Transform
+	automaticSize: Enum.AutomaticSize?,
 }
 
 local function Label(props: LabelProps, hooks: any)
@@ -20,7 +21,7 @@ local function Label(props: LabelProps, hooks: any)
 
 	local theme = hooks.useContext(ThemeContext)
 
-	return Roact.createElement("TextLabel", {
+	return e("TextLabel", {
 		BackgroundTransparency = 1,
 		FontFace = Font.new("rbxasset://fonts/families/SourceSansPro.json", Enum.FontWeight.Bold),
 		AutomaticSize = props.automaticSize,

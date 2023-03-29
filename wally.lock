@@ -5,11 +5,11 @@ registry = "test"
 [[package]]
 name = "encodedlua/rodux-dev-tools"
 version = "0.0.1"
-dependencies = [["Roact", "roblox/roact@1.4.4"], ["RoactHooks", "kampfkarren/roact-hooks@0.5.0"], ["Rodux", "roblox/rodux@3.0.0"], ["RoduxHooks", "solarhorizon/rodux-hooks@0.3.1"]]
+dependencies = [["Roact", "roblox/roact@1.4.4"], ["RoactHooks", "kampfkarren/roact-hooks@0.5.1"], ["Rodux", "roblox/rodux@3.0.0"], ["RoduxHooks", "solarhorizon/rodux-hooks@0.3.1"]]
 
 [[package]]
 name = "kampfkarren/roact-hooks"
-version = "0.5.0"
+version = "0.5.1"
 dependencies = []
 
 [[package]]
