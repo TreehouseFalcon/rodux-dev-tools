@@ -1,7 +1,6 @@
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local Packages = ReplicatedStorage.Packages
 local RoduxDevTools = require(Packages.RoduxDevTools)
-local Rodux = require(Packages.Rodux)
 local store = require(Packages.RoduxDevTools.Store)
 
 local function resetLib()
