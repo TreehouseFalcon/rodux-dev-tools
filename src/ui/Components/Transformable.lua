@@ -34,6 +34,7 @@ local function Transformable(Component: RoactComponent): RoactComponent
 			[Roact.Event.InputEnded] = props[Roact.Event.InputEnded],
 			[Roact.Event.MouseMoved] = props[Roact.Event.MouseMoved],
 			[Roact.Event.MouseLeave] = props[Roact.Event.MouseLeave],
+			[Roact.Change.AbsoluteSize] = props[Roact.Change.AbsoluteSize],
 		}, {
 			TransformableElement = e(
 				Component,

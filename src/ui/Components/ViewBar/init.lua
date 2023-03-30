@@ -5,8 +5,9 @@ local RoactSpring = require(script.Parent.Parent.Parent.Parent.RoactSpring)
 local Transform = require(script.Parent.Transform)
 local ViewTab = require(script.ViewTab)
 local Immutable = require(script.Parent.Parent.Parent.Immutable)
+local ScreenContext = require(script.Parent.Parent.Contexts.Screen)
+local Underline = require(script.Underline)
 
-local TAB_WIDTH = 140
 local TABS = {
 	{
 		icon = "action",
@@ -17,17 +18,25 @@ local TABS = {
 		text = "Settings",
 	},
 }
+local TAB_WIDTH_PIXELS = 140
+local TAB_WIDTH_PERCENT = 1 / #TABS
 
 type Props = {}
 
 local function ViewBar(_props: Props, hooks: any)
 	local selectedTabIndex, setSelectedTabIndex = hooks.useState(1)
+	local screenContext = hooks.useContext(ScreenContext)
 	local selectSpring = RoactSpring.useSpring(hooks, {
 		index = selectedTabIndex,
 		config = {
 			frequency = 0.06,
 		},
 	})
+
+	local screenSpaceMode = screenContext.screenSpaceMode
+	local tabWidth = if screenSpaceMode == "Mobile"
+		then UDim.new(TAB_WIDTH_PERCENT, 0)
+		else UDim.new(0, TAB_WIDTH_PIXELS)
 
 	local viewTabs = {}
 	for idx, tab in TABS do
@@ -36,7 +45,7 @@ local function ViewBar(_props: Props, hooks: any)
 			e(
 				ViewTab,
 				Immutable.merge(tab, {
-					width = TAB_WIDTH,
+					width = tabWidth,
 					layoutOrder = idx,
 					activated = function()
 						setSelectedTabIndex(idx)
@@ -60,14 +69,16 @@ local function ViewBar(_props: Props, hooks: any)
 			}),
 		}),
 
-		e("Frame", {
-			AnchorPoint = Vector2.new(0, 0),
-			Position = selectSpring.index:map(function(index)
-				return UDim2.new(0, TAB_WIDTH * (index - 1) + 5, 1, 0)
+		e(Underline, {
+			position = selectSpring.index:map(function(index)
+				if screenSpaceMode == "Mobile" then
+					return UDim2.new(TAB_WIDTH_PERCENT * (index - 1), 0, 0, 0)
+				else
+					return UDim2.new(0, TAB_WIDTH_PIXELS * (index - 1), 0, 0)
+				end
 			end),
-			Size = UDim2.new(0, TAB_WIDTH - 10, 0, 2),
-			BackgroundColor3 = Color3.fromRGB(100, 150, 255),
-			BorderSizePixel = 0,
+			size = tabWidth,
+			underlineWidthPixels = TAB_WIDTH_PIXELS,
 		}),
 	})
 end

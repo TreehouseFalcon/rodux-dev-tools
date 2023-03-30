@@ -9,7 +9,7 @@ local TIcon = Transformable(Icon)
 local TButton = Transformable(Button)
 
 type Props = {
-	width: number,
+	width: UDim,
 	icon: string,
 	text: string,
 	layoutOrder: number,
@@ -19,11 +19,12 @@ type Props = {
 local function ViewTab(props: Props)
 	local icon = props.icon
 	local text = props.text
+	local width = props.width
 	assert(typeof(icon) == "string", "icon must be a string")
 	assert(typeof(text) == "string", "text must be a string")
 
 	return e(TButton, {
-		size = UDim2.new(0, props.width, 1, 0),
+		size = UDim2.new(width, UDim.new(1, 0)),
 		layoutOrder = props.layoutOrder,
 		backgroundTransparency = 1,
 		activated = props.activated,

@@ -36,6 +36,7 @@ local function Transform(props: TransformableTypes.Props)
 		[Roact.Event.InputEnded] = props[Roact.Event.InputEnded],
 		[Roact.Event.MouseMoved] = props[Roact.Event.MouseMoved],
 		[Roact.Event.MouseLeave] = props[Roact.Event.MouseLeave],
+		[Roact.Change.AbsoluteSize] = props[Roact.Change.AbsoluteSize],
 	}, {
 		Roact.createFragment(props[Roact.Children]),
 	})
