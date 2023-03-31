@@ -57,6 +57,7 @@ local function ViewBar(_props: Props, hooks: any)
 
 	return e(Transform, {
 		size = UDim2.new(1, 0, 0, 36),
+		layoutOrder = 1,
 	}, {
 		e(Transform, {}, {
 			Roact.createFragment(viewTabs),
